@@ -1,0 +1,28 @@
+.brain_quest,
+.word-explore,
+.story-adventure {
+  width: 100%;
+}
+
+.adventure-page {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+
+  .adventure__id--heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .item__tabs{
+    margin: 2rem;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    width: 60%;
+  }
+}

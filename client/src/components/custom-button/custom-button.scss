@@ -1,0 +1,20 @@
+.custom-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5rem;
+  border: none;
+  padding: .8rem;
+  font-size: 1.4rem;
+  margin: .5rem;
+  background-color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bg-dark {
+  background-color: #eaeaea;
+  color: #000;
+  border: 2px solid blue;
+}

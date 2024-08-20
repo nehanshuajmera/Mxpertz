@@ -1,0 +1,16 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
