@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./adventure-page.scss";
 import { CustomButton } from "../../components/custom-button/custom-button.component";
+import { LayoutComponent } from "../../components/layout-component/layout-component";
 
 export const AdventurePage = ({ data }) => {
   const { id } = useParams();
@@ -107,7 +108,7 @@ export const AdventurePage = ({ data }) => {
         {activeTab === "wordexplore" && renderWordexplore()}
       </div>
 
-      
+      <LayoutComponent />
     </div>
   );
 };
