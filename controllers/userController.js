@@ -18,6 +18,13 @@ export const userSignup = async (req, res) => {
   try {
     const user = await User.signup(username, email, password);
     const token = createToken(user._id, "User");
+
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
+      // secure: process.env.NODE_ENV === "production",
+    });
+
     res.status(201).json({ user: user.username, token });
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -31,6 +38,13 @@ export const userSignin = async (req, res) => {
   try {
     const user = await User.signin(usernameOrEmail, password);
     const token = createToken(user._id, "User");
+
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
+      // secure: process.env.NODE_ENV === "production",
+    });
+
     res.status(200).json({ user: user.username, token });
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -40,6 +54,7 @@ export const userSignin = async (req, res) => {
 /* User Signout */
 export const userSignout = async (req, res) => {
   try {
+    res.clearCookie("authToken");
     res.status(200).json({ message: "User signed out" });
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -94,7 +109,9 @@ export const updateUser = async (req, res) => {
     // Validate and add username to updates if provided
     if (username) {
       if (username === user.username) {
-        return res.status(400).json({ message: "Username is the same as the current one" });
+        return res
+          .status(400)
+          .json({ message: "Username is the same as the current one" });
       }
       if (!validator.matches(username, /^[a-z0-9_.-]{8,}$/)) {
         return res.status(400).json({
@@ -113,7 +130,9 @@ export const updateUser = async (req, res) => {
     // Validate and add email to updates if provided
     if (email) {
       if (email === user.email) {
-        return res.status(400).json({ message: "Email is the same as the current one" });
+        return res
+          .status(400)
+          .json({ message: "Email is the same as the current one" });
       }
       if (!validator.isEmail(email)) {
         return res.status(400).json({ message: "Invalid email format" });
@@ -142,7 +161,11 @@ export const updateUser = async (req, res) => {
 
       const isSamePassword = await bcrypt.compare(password, user.password);
       if (isSamePassword) {
-        return res.status(400).json({ message: "New password cannot be the same as the current password" });
+        return res
+          .status(400)
+          .json({
+            message: "New password cannot be the same as the current password",
+          });
       }
 
       if (

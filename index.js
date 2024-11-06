@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { config } from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 /* configuring enviroment variables */
 config();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
 app.use(cors());
+app.use(cookieParser());
 
 /* routes */
 app.get("/", (req, res) => {

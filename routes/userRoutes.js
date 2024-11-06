@@ -1,5 +1,6 @@
 import express from "express";
 const router = express.Router();
+import { authorizeUser, userAuth } from "../middlewares/userAuth.js";
 import {
   deleteUser,
   getAllUsers,
@@ -23,12 +24,12 @@ router.post("/signup", userSignup);
 router.post("/signin", userSignin);
 
 // User signout
-router.post("/signout", userSignout);
+router.post("/signout", userAuth, authorizeUser, userSignout);
 
 // update user
-router.patch("/:id", updateUser);
+router.patch("/:id", userAuth, authorizeUser, updateUser);
 
 // delete user
-router.delete("/:id", deleteUser);
+router.delete("/:id", userAuth, authorizeUser, deleteUser);
 
 export const userRoutes = router;
