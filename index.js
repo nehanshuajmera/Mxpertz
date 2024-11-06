@@ -17,11 +17,17 @@ import { userRoutes } from "./routes/userRoutes.js";
 /* creating express app */
 const app = express();
 
+/* CORS Configuration */
+const corsOptions = {
+  origin: ["http://localhost:5173",],
+  credentials: true,
+};
+
 /* middleware */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 
 /* routes */
