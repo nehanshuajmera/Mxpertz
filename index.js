@@ -10,6 +10,9 @@ config();
 const PORT = process.env.PORT;
 const MDB_CONNECT = process.env.MDB_CONNECT;
 
+/* Importing routes */
+import { userRoutes } from "./routes/userRoutes.js";
+
 /* creating express app */
 const app = express();
 
@@ -22,7 +25,9 @@ app.use(cors());
 /* routes */
 app.get("/", (req, res) => {
   res.status(200).json(`Backend Working, Happy Coding!!`);
-})
+});
+
+app.use("/api/user", userRoutes);
 
 /* connecting to mongodb */
 const connect = async () => {
@@ -44,5 +49,5 @@ connect();
 /* Global Error Handler */
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send({message: err.message});
+  res.status(500).send({ message: err.message });
 });
