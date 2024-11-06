@@ -1,0 +1,56 @@
+@import "../../../App.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    width: 50%;
+    cursor: pointer;
+  }
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30%;
+    padding: 0.5rem;
+    margin: 0 1rem;
+
+    .nav-item {
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding: 1rem 1.5rem;
+      margin: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .nav-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 18%;
+    padding: 0.5rem;
+    margin: 0 1rem;
+
+    .nav-btn {
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding: 1rem 1.5rem;
+      margin: 0.5rem 1rem;
+      cursor: pointer;
+      background-color: cyan;
+      border-radius: .5rem;
+
+      &:hover {
+        background-color: lighten(cyan, 15%);
+      } 
+    }
+  }
+}

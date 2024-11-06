@@ -5,6 +5,13 @@ body {
   // font-family: 'karla', sans-serif;
 }
 
+@import './sass/variables';
+@import './sass/utilities';
+@import './sass/typography';
+@import './sass/mixins';
+@import './sass/animations';
+@import './sass/buttons';
+
 :root {
   --primary-color: #007bff;
   --secondary-color: #6c757d;
